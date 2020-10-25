@@ -1,0 +1,42 @@
+#!/bin/zsh
+
+function __notify_usage {
+  echo ""
+  echo "notify [OPTIONS]"
+  echo ""
+  echo "Description"
+  echo ""
+  echo "  -m, --message    The body text of the notification. Must be specified."
+  echo "  -t, --title      The title of the notification. Defaults to \"Notification\""
+  echo "  -h, --help       Prints this help text"
+  echo ""
+  echo "Examples"
+  echo ""
+  echo "  notify -m \"awesome message\""
+  echo "  notify -m \"awesome message\" -t \"Notification Title\""
+}
+
+zparseopts -D -E m:=message -message:=message t:=title -title:=title h=help -help=help
+
+if [ ! -z "$help" ]; then
+  _backup_usage
+  return
+fi
+
+title="$title[2]"
+message="$message[2]"
+
+if [ -z "$message" ]; then
+  message="$1"
+fi
+
+if [ -z "$message" ]; then
+  __notify_usage
+  return
+fi
+
+if [ -z "$title" ]; then
+  title="Notification"
+fi
+
+osascript -e "display notification \"$message\" with title \"$title\""

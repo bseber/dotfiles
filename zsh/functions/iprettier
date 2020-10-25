@@ -1,0 +1,34 @@
+#!/bin/zsh
+
+FILE=.prettierrc
+
+function _iprettier_confirm {
+  if read -q "confirm?.prettierrc file exists already. overwrite it? [y/N] "; then
+    echo ""
+    echo ""
+    _iprettier_generate_file
+  fi
+}
+
+function _iprettier_generate_file {
+  printf '%b\n' \
+    '{' \
+    '\t"arrowParens": "always",' \
+    '\t"bracketSpacing": true,' \
+    '\t"printWidth": 80,' \
+    '\t"semi": true,' \
+    '\t"tabWidth": 2', \
+    '\t"useTabs": true,' \
+    '\t"trailingComma": "all"' \
+    '}' \
+    '' > $FILE
+
+  echo "generated $FILE file ♥️"
+  bat $FILE
+}
+
+if [ -f "$FILE" ]; then
+  _iprettier_confirm
+else
+  _iprettier_generate_file
+fi

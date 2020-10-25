@@ -1,0 +1,47 @@
+#!/bin/zsh
+
+FILE=.editorconfig
+
+function _ieditorconfig_confirm {
+  if read -q "confirm?.editorconfig file exists already. overwrite it? [y/N] "; then
+    echo ""
+    echo ""
+    _ieditorconfig_generate_file
+  fi
+}
+
+function _ieditorconfig_generate_file {
+  local indent_style="tabs"
+  local indent_size="2"
+
+  printf "%s\n" \
+    "# EditorConfig is awesome: https://EditorConfig.org" \
+    "" \
+    "# top-most EditorConfig file" \
+    "root = true" \
+    "" \
+    "[*]" \
+    "charset = utf-8" \
+    "end_of_line = lf" \
+    "insert_final_newline = true" \
+    "trim_trailing_whitespace = true" \
+    "indent_style = $indent_style" \
+    "indent_size = $indent_size" \
+    "" \
+    "[*.yml]" \
+    "indent_style = space" \
+    "indent_size = 2" \
+    "" \
+    "[*.md]" \
+    "trim_trailing_whitespace = false" \
+    "" > $FILE
+
+  echo "generated $FILE file ♥️"
+  bat $FILE
+}
+
+if [ -f "$FILE" ]; then
+  _ieditorconfig_confirm
+else
+  _ieditorconfig_generate_file
+fi

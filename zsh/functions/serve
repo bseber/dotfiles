@@ -1,0 +1,44 @@
+#!/bin/zsh
+
+function _serve_usage {
+  echo ""
+  echo "  serve [OPTIONS] [<folder>]"
+  echo ""
+  echo "Description"
+  echo ""
+  echo "  -p, --port    Specify alternate port [default: 8080]"
+  echo "  -b, --bind    Specify alternate bind address [default: localhost]"
+  echo "  -h, --help    Prints this help text"
+  echo ""
+  echo "Examples"
+  echo ""
+  echo "  serve"
+  echo "  serve out"
+  echo "  serve --port 8080 out"
+  echo "  serve --port 8080 --bind 0.0.0.0 out"
+}
+
+zparseopts -D -E p:=port -port:=port b:=bind -bind:=bind h=help -help=help
+
+if [ ! -z "$help" ]; then
+  _serve_usage
+  return
+fi
+
+directory=.
+bind=localhost
+port=8080
+
+if [ -z "$directory" ]; then
+  directory="."
+fi
+
+if [ -z "$port" ]; then
+  port="8080"
+fi
+
+if [ -z "$bind" ]; then
+  python3 -m http.server --directory $directory --bind $bind $port
+else
+  python3 -m http.server --directory $directory $port
+fi

@@ -1,0 +1,80 @@
+[commit]
+  name = Benjamin Seber
+  email = benjamin.seber@mailbox.org
+  gpgsign = true
+
+[alias]
+  ec = config --global -e
+  praise = blame
+  s = status --short --branch
+  st = stash
+  co = checkout
+  cob = checkout -b
+  c = commit
+  fix = commit --fixup
+  amend = commit -a --amend
+  ri = rebase -i --autosquash
+  fpush = push --force-with-lease
+  mpush = "!f() { branchname=$(git symbolic-ref --short HEAD); git push --push-option=merge_request.create --push-option=merge_request.remove_source_branch --push-option=merge_request.title=\"DRAFT: $branchname\" $1; }; f"
+  up = !git pull --rebase --prune && git bclean
+  cm = !git add -A && git commit -m
+  wip = !git add -A && git commit --no-verify -m "[WIP]"
+  undo = reset HEAD~1 --mixed
+  wipe = !git add -A && git commit -m 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+  bclean = "!f() { branches=$(git branch --merged ${1-master} | grep -v " ${1-master}$"); [ -z \"$branches\" ] || git branch -d $branches; }; f"
+  glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+  ll = !git --no-pager log --oneline --decorate
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  # https://gist.github.com/matthewmccullough/988077
+  orphank = !gitk --all `git reflog | cut -c1-7`&
+
+[core]
+  autocrlf = input
+  excludesfile = ~/.gitignore_global
+  editor = vim
+  filemode = false
+  pager = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight
+  # Make `git rebase` safer on OS X
+  # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+  trustctime = false
+  # This cache is meant to speed up commands that involve determining untracked
+  # files such as git status.
+  untrackedCache = true
+
+[color]
+  ui = true
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+
+[rerere]
+  enabled = true
+
+[push]
+  default = simple
+
+[diff]
+  # Enable the experimental compaction heuristic option
+  # https://github.com/git/git/commit/5580b271af518bae30148edfd42cc8459d8da384
+  #compactionHeuristic = true
+  indentHeuristic = true
+  algorithm = patience
+  tool = code
+
+[merge]
+  tool = code
+
+[interactive]
+  # Use the diff-highlight script to emphasize the changed parts of a line
+  # https://github.com/blog/2188-git-2-9-has-been-released
+  diffFilter = diff-highlight
+
+[branch]
+  autosetupmerge = always
+
+[include]
+    # The following needs to remain at the end of this file in
+    # order to allow any of the above configs to be overwritten
+    # by the local ones
+    path = ~/.gitconfig.local

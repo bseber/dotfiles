@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+SOURCE="$HOME/Documents/private"
+TARGET="file://$HOME/Dropbox/private"
+
+# listen to file changes (added, removed, edited) and do a backup
+echo "start listening to file changes in $SOURCE"
+fswatch $SOURCE | xargs -n1 -I{} zsh -c "backup --source $SOURCE --target $TARGET"
