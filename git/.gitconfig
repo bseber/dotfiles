@@ -33,7 +33,7 @@
   excludesfile = ~/.gitignore_global
   editor = vim
   filemode = false
-  pager = `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight
+  pager = delta
   # Make `git rebase` safer on OS X
   # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
   trustctime = false
@@ -61,14 +61,20 @@
   indentHeuristic = true
   algorithm = patience
   tool = code
+  colorMoved = default
 
 [merge]
   tool = code
 
 [interactive]
-  # Use the diff-highlight script to emphasize the changed parts of a line
-  # https://github.com/blog/2188-git-2-9-has-been-released
-  diffFilter = diff-highlight
+  diffFilter = delta --color-only --diff-so-fancy
+
+[delta]
+  plus-color = "#012800"
+  minus-color = "#340001"
+  # to list supported themes use `delta --list-syntax-themes`
+  syntax-theme = 1337
+  side-by-side = false
 
 [branch]
   autosetupmerge = always
@@ -78,3 +84,6 @@
     # order to allow any of the above configs to be overwritten
     # by the local ones
     path = ~/.gitconfig.local
+
+[init]
+  defaultBranch = main
