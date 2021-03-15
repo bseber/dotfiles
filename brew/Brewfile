@@ -40,6 +40,10 @@ cask "the-unarchiver"
 cask "fork"
 
 # fonts
+## development
 cask "font-fira-code"
 cask "font-firacode-nerd-font-mono"
 cask "font-meslo-lg-nerd-font"
+## websites (?)
+cask "font-lato"
+cask "font-raleway"
