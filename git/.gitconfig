@@ -1,6 +1,8 @@
-[commit]
+[user]
   name = Benjamin Seber
   email = benjamin.seber@mailbox.org
+
+[commit]
   gpgsign = true
 
 [alias]
