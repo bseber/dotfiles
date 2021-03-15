@@ -23,7 +23,7 @@
   wip = !git add -A && git commit --no-verify -m "[WIP]"
   undo = reset HEAD~1 --mixed
   wipe = !git add -A && git commit -m 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
-  bclean = "!f() { branches=$(git branch --merged ${1-master} | grep -v " ${1-master}$"); [ -z \"$branches\" ] || git branch -d $branches; }; f"
+  bclean = "!f() { branches=$(git branch --merged ${1-main} | grep -v " ${1-main}$"); [ -z \"$branches\" ] || git branch -d $branches; }; f"
   glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
   ll = !git --no-pager log --oneline --decorate
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
