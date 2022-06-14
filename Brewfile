@@ -3,6 +3,8 @@ tap "homebrew/cask-fonts", "git@github.com:homebrew/homebrew-cask-fonts"
 tap "homebrew/cask-versions", "git@github.com:homebrew/homebrew-cask-versions"
 # yubico
 tap "homebrew/cask-drivers", "git@github.com:homebrew/homebrew-cask-drivers"
+# sketchybar
+tap "FelixKratz/formulae", "git@github.com:FelixKratz/homebrew-formulae.git"
 
 brew "bat"
 brew "direnv"
@@ -21,6 +23,7 @@ brew "jsonlint"
 brew "kubernetes-cli"
 brew "nvm"
 brew "ripgrep"
+brew "sketchybar"
 brew "tree"
 brew "wget"
 brew "zoxide"
