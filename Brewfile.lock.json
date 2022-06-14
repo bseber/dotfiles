@@ -246,27 +246,6 @@
         "version": "0.36.0",
         "bottle": false
       },
-      "fswatch": {
-        "version": "1.15.0",
-        "bottle": {
-          "cellar": ":any",
-          "prefix": "/usr/local",
-          "files": {
-            "catalina": {
-              "url": "https://homebrew.bintray.com/bottles/fswatch-1.15.0.catalina.bottle.tar.gz",
-              "sha256": "77233b7d6c11644f14682862d613ed37a5eda86ba1ec5a6ea3c18b75ccafe906"
-            },
-            "mojave": {
-              "url": "https://homebrew.bintray.com/bottles/fswatch-1.15.0.mojave.bottle.tar.gz",
-              "sha256": "2602ae4b5b43cb63ec6a249bdf8b1e81b124ae18392f01a2a8ebf0faec1ac5ff"
-            },
-            "high_sierra": {
-              "url": "https://homebrew.bintray.com/bottles/fswatch-1.15.0.high_sierra.bottle.tar.gz",
-              "sha256": "057894d713ee24ea5e64c0db014e1593cee8eb253bbb962c68a6426a25f39c9e"
-            }
-          }
-        }
-      },
       "ripgrep": {
         "version": "12.1.1",
         "bottle": {
@@ -341,12 +320,6 @@
       }
     },
     "cask": {
-      "alfred": {
-        "version": "4.0.6_1124",
-        "options": {
-          "full_name": "alfred"
-        }
-      },
       "appcleaner": {
         "version": "3.5",
         "options": {
@@ -387,12 +360,6 @@
         "version": "1.1.5",
         "options": {
           "full_name": "yubico-yubikey-manager"
-        }
-      },
-      "rectangle": {
-        "version": "0.24",
-        "options": {
-          "full_name": "rectangle"
         }
       },
       "the-unarchiver": {

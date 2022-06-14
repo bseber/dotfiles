@@ -29,6 +29,7 @@
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   # https://gist.github.com/matthewmccullough/988077
   orphank = !gitk --all `git reflog | cut -c1-7`&
+  recent = branch --sort=-committerdate --format="%(committerdate:relative)%09%(refname:short)"
 
 [core]
   autocrlf = input
@@ -72,8 +73,8 @@
   diffFilter = delta --color-only --diff-so-fancy
 
 [delta]
-  plus-color = "#012800"
-  minus-color = "#340001"
+  plus-color = syntax "#012800"
+  minus-color = normal "#340001"
   # to list supported themes use `delta --list-syntax-themes`
   syntax-theme = 1337
   side-by-side = false

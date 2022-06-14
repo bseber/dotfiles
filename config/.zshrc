@@ -1,3 +1,8 @@
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the start of this file.
+[ -s ~/.fig/shell/pre.sh ] && source ~/.fig/shell/pre.sh
+#### END FIG ENV VARIABLES ####
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -26,8 +31,13 @@ export ZLE_RPROMPT_INDENT=0
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# ramp-up z
-. $(brew --prefix)/etc/profile.d/z.sh
+# Configuring brew Completions in zsh (https://docs.brew.sh/Shell-Completion#configuring-completions-in-zsh)
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
 
 plugins=(git docker docker-compose zsh-better-npm-completion)
 
@@ -40,11 +50,7 @@ alias l="exa -l --git"
 alias ls="exa -a --git"
 alias ll="exa -al --git"
 alias cd..="cd .."
-
-# add custom zsh functions to fpath, and then lazy autoload
-# every file in there as a function
-fpath=(~/.dotfiles/zsh/functions $fpath);
-autoload -U $fpath[1]/*(.:t)
+alias vim="nvim"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
@@ -52,6 +58,7 @@ export NVM_DIR="$HOME/.nvm"
 
 export DIRENV_LOG_FORMAT=""
 eval "$(direnv hook zsh)"
+eval "$(zoxide init zsh)"
 
 autoload -U add-zsh-hook
 load-nvmrc() {
@@ -82,3 +89,8 @@ load-nvmrc
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/zsh/.p10k.zsh.
 [[ ! -f ~/.dotfiles/zsh/.p10k.zsh ]] || source ~/.dotfiles/zsh/.p10k.zsh
 alias godot="/Applications/Godot.app/Contents/MacOS/Godot"
+
+#### FIG ENV VARIABLES ####
+# Please make sure this block is at the end of this file.
+[ -s ~/.fig/fig.sh ] && source ~/.fig/fig.sh
+#### END FIG ENV VARIABLES ####
