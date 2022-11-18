@@ -56,6 +56,7 @@
 
 [push]
   default = simple
+	autoSetupRemote = true
 
 [diff]
   # Enable the experimental compaction heuristic option
