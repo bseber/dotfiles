@@ -24,6 +24,9 @@ export SHELL=/usr/local/bin/zsh
 export M2_HOME=/usr/local/apache-maven/maven
 export PATH=$M2_HOME/bin:$HOME/bin:/usr/local/bin:$PATH
 
+# kubectl plugin management https://krew.sigs.k8s.io/
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 export POWERLEVEL9K_LEGACY_ICON_SPACING=true
