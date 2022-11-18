@@ -17,6 +17,9 @@ lalt - l : yabai -m window --focus east  || yabai -m display --focus east
 # Float / Unfloat window: lalt - space
 lalt - space : yabai -m window --toggle float; --trigger window_focus
 
+# center focused (floating) window: `yabai -m window --grid  <rows>:<cols>:<start-x>:<start-y>:<width>:<height>`
+lalt - c : yabai -m window --grid 1:4:1:0:2:1
+
 # Make window zoom to fullscreen: shift + lalt - f
 shift + lalt - f : yabai -m window --toggle zoom-fullscreen;
 
@@ -34,12 +37,12 @@ shift + lalt - k : yabai -m window --warp north || $(yabai -m window --display n
 shift + lalt - l : yabai -m window --warp east || $(yabai -m window --display east; yabai -m display --focus east; yabai -m window --warp first) || yabai -m window --move rel:10:0
 
 # Moving windows between spaces: shift + lalt - {1, 2, 3, 4, p, n } (Assumes 4 Spaces Max per Display)
-shift + lalt - 1 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 1; else yabai -m window --space 5; fi
-shift + lalt - 2 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 2; else yabai -m window --space 6; fi
-shift + lalt - 3 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 3; else yabai -m window --space 7; fi
-shift + lalt - 4 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 4; else yabai -m window --space 8; fi
-shift + lalt - p : yabai -m window --space prev; yabai -m space --focus prev
-shift + lalt - n : yabai -m window --space next; yabai -m space --focus next
+fn + lalt - 1 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 1; else yabai -m window --space 5; fi
+fn + lalt - 2 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 2; else yabai -m window --space 6; fi
+fn + lalt - 3 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 3; else yabai -m window --space 7; fi
+fn + lalt - 4 : if [ "$(yabai -m query --displays --display | jq '.index')" -eq "1" ]; then yabai -m window --space 4; else yabai -m window --space 8; fi
+fn + lalt - p : yabai -m window --space prev; yabai -m space --focus prev
+fn + lalt - n : yabai -m window --space next; yabai -m space --focus next
 
 ## Stacks (shift + ctrl - ...)
 # Add the active window to the window or stack to the {direction}: shift + ctrl - {j, k, l, ö}
