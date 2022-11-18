@@ -16,25 +16,27 @@ SEGMENT_SPACING=13 # The spacing between segments
 POPUP_BORDER_WIDTH=2
 POPUP_CORNER_RADIUS=3
 
-SHADOW=on
+SHADOW=off
 SHADOW_DISTANCE=3
 SHADOW_ANGLE=35
 
 # Setting up the general bar appearance and default values
-sketchybar --bar     height=32                                           \
+sketchybar --bar     height=25                                           \
                      corner_radius=0                                     \
                      border_width=0                                      \
                      margin=0                                            \
-                     blur_radius=0                                       \
+                     blur_radius=6                                       \
                      position=top                                        \
-                     padding_left=4                                      \
-                     padding_right=4                                     \
-                     color=$BAR_COLOR                                    \
+                     padding_left=0                                      \
+                     padding_right=12                                     \
+                     #color=$BAR_COLOR                                    \
+                     #border_color=$WHITE                                 \
                      topmost=off                                         \
                      font_smoothing=off                                  \
                      y_offset=0                                          \
-                     shadow=on                                           \
+                     shadow=off                                           \
                      notch_width=0                                       \
+                     display=main                                        \
                                                                          \
            --default drawing=on                                          \
                      updates=when_shown                                  \
@@ -73,21 +75,21 @@ sketchybar --add item           label_template left                          \
                                 background.padding_right=0                   \
                                 drawing=off
 
-source "$ITEM_DIR/apple.sh"
+# source "$ITEM_DIR/apple.sh"
 source "$ITEM_DIR/spaces.sh"
-source "$ITEM_DIR/github.sh"
-source "$ITEM_DIR/network.sh"
+# source "$ITEM_DIR/github.sh"
+# source "$ITEM_DIR/network.sh"
 # source "$ITEM_DIR/memory.sh"
 
-source "$ITEM_DIR/calendar.sh"
+# source "$ITEM_DIR/calendar.sh"
 source "$ITEM_DIR/cpu.sh"
 source "$ITEM_DIR/system.sh"
-source "$ITEM_DIR/spotify.sh"
+# source "$ITEM_DIR/spotify.sh"
 
 ############## FINALIZING THE SETUP ##############
 sketchybar --update
 
 ############## Animation ########################
-sketchybar --animate sin 30 --bar notch_width=200
+sketchybar --animate sin 30
 
 echo "sketchybar configuation loaded.."
